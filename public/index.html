@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f7f2">
+  <title>KaloriLens — Catatan Kalori Harian</title>
+  <style>
+    :root{color-scheme:light;--ink:#18241d;--muted:#7d8980;--line:#e8ebe4;--green:#286747;--mint:#dcebdd;--paper:#fff;--bg:#f6f7f2;--orange:#f2a26c;--shadow:0 14px 40px #2033230d}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}button,input{font:inherit}button{cursor:pointer}.shell{max-width:1160px;margin:auto;padding:28px 32px 64px}.topbar{height:56px;display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.04em;font-size:20px}.brand-mark{width:38px;height:38px;background:var(--green);color:#fff;border-radius:13px;display:grid;place-items:center;font-size:20px}.date-pill{color:#58665c;font-size:13px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:10px 14px}.intro{display:flex;justify-content:space-between;align-items:end;margin-bottom:23px;gap:20px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.15em;font-weight:800;color:var(--green)}h1{font-size:clamp(27px,4vw,39px);letter-spacing:-.055em;margin:7px 0 4px;line-height:1.1}.intro p{margin:0;color:var(--muted);font-size:14px}.goal-button,.secondary-button{border:1px solid var(--line);background:#fff;padding:11px 15px;border-radius:13px;color:var(--ink);font-weight:700;font-size:13px;white-space:nowrap}.goal-button:hover,.secondary-button:hover{border-color:#b9c9b9}.dashboard{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,.85fr);gap:18px;align-items:stretch}.card{background:var(--paper);border:1px solid var(--line);border-radius:23px;box-shadow:var(--shadow)}.calorie-card{padding:25px 27px;display:grid;grid-template-columns:1fr 185px;align-items:center;gap:18px;min-height:260px}.card-label{font-size:13px;font-weight:750}.sub-label{font-size:12px;color:var(--muted);margin-top:5px}.remaining{font-size:clamp(48px,7vw,72px);font-weight:800;letter-spacing:-.08em;line-height:1;margin:24px 0 7px;font-variant-numeric:tabular-nums}.remaining small{font-size:18px;letter-spacing:-.03em;color:#59675d;font-weight:650}.progress-track{height:8px;border-radius:99px;background:#edf0e9;margin:20px 0 9px;overflow:hidden}.progress-fill{height:100%;width:0;background:var(--green);border-radius:inherit;transition:width .4s ease}.progress-fill.over{background:#d87052}.progress-caption{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}.ring-wrap{display:grid;justify-items:center;gap:10px}.ring{--progress:0deg;width:160px;height:160px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) var(--progress),#edf0e9 0);position:relative}.ring:before{content:"";position:absolute;inset:10px;background:#fff;border-radius:50%}.ring-content{position:relative;text-align:center}.ring-number{display:block;font-size:26px;font-weight:800;letter-spacing:-.05em}.ring-caption{font-size:11px;color:var(--muted)}.ring-legend{font-size:12px;color:#59675d}.stats{display:grid;grid-template-columns:1fr 1fr;gap:13px}.stat-card{padding:20px 21px;min-height:119px;display:flex;flex-direction:column;justify-content:space-between}.stat-top{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:12px}.stat-icon{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:#eef3ea;font-size:15px}.stat-number{font-size:26px;letter-spacing:-.05em;font-weight:800;margin-top:13px}.stat-number small{font-size:13px;letter-spacing:0;color:var(--muted);font-weight:600}.section-heading{display:flex;justify-content:space-between;align-items:center;margin:31px 2px 14px}.section-heading h2{font-size:19px;letter-spacing:-.04em;margin:0}.section-heading span{font-size:12px;color:var(--muted)}.lower-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr);gap:18px}.log-card,.analyzer-card{padding:22px}.meal-list{display:grid;gap:10px}.empty{border:1px dashed #dce3d8;border-radius:16px;padding:25px 15px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6}.meal{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #f0f1ed}.meal:last-child{border-bottom:0}.meal-icon{width:42px;height:42px;border-radius:14px;background:#f3f4ed;display:grid;place-items:center;font-size:19px;flex:none}.meal-info{min-width:0;flex:1}.meal-name{font-size:13px;font-weight:750;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.meal-time{font-size:11px;color:var(--muted);margin-top:4px}.meal-cal{font-size:13px;font-weight:800;white-space:nowrap}.remove-meal{border:0;background:transparent;color:#a4ada5;font-size:18px;padding:5px}.remove-meal:hover{color:#bd5747}.analyzer-card{background:#fffdf9}.analyzer-top{display:flex;gap:12px;align-items:center;margin-bottom:17px}.ai-icon{width:42px;height:42px;border-radius:14px;background:#f8eadc;display:grid;place-items:center;font-size:19px}.analyzer-top h3{margin:0;font-size:15px;letter-spacing:-.02em}.analyzer-top p{margin:4px 0 0;font-size:11px;color:var(--muted)}.dropzone{height:156px;border:1.5px dashed #dfd9ca;border-radius:17px;background:#fff;padding:14px;display:grid;place-items:center;text-align:center;overflow:hidden}.dropzone img{display:none;width:100%;height:100%;object-fit:contain;border-radius:12px;background:#f7f6f1}.dropzone-copy{font-size:25px}.dropzone-copy b{display:block;font-size:12px;margin-top:7px}.dropzone-copy span{display:block;color:var(--muted);font-size:10px;margin-top:4px}.file-input{display:none}.button-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:11px}.button-row .secondary-button,.primary-button{width:100%;min-height:43px}.primary-button{border:0;border-radius:13px;background:var(--green);color:#fff;font-size:12px;font-weight:750;padding:11px}.primary-button:hover:not(:disabled){background:#1d5438}.primary-button:disabled{opacity:.45;cursor:not-allowed}.loading,.error{display:none;font-size:12px;margin-top:11px}.loading{color:var(--green)}.error{color:#b43c35}.analysis-result{display:none;margin-top:14px;border-top:1px solid var(--line);padding-top:14px}.analysis-result h4{margin:0 0 6px;font-size:15px}.analysis-result p{font-size:11px;color:var(--muted);line-height:1.5;margin:0 0 10px}.result-cal{font-weight:800;color:var(--green)}.save-result{margin-top:8px}.disclaimer{font-size:11px;color:#7d8980;line-height:1.6;margin:14px 2px 0}.modal{position:fixed;inset:0;background:#14211970;display:none;place-items:center;padding:20px;z-index:5}.modal.open{display:grid}.modal-panel{background:#fff;width:min(100%,410px);border-radius:22px;padding:23px;box-shadow:0 22px 70px #0002}.modal-panel h2{font-size:20px;letter-spacing:-.04em;margin:0 0 7px}.modal-panel p{color:var(--muted);font-size:12px;line-height:1.6;margin:0 0 19px}.modal-panel label{display:block;font-size:12px;font-weight:700;margin-bottom:7px}.goal-input-wrap{display:flex;align-items:center;gap:10px}.goal-input-wrap input{min-width:0;flex:1;border:1px solid var(--line);border-radius:12px;padding:12px;font-size:16px;outline:none}.goal-input-wrap input:focus{border-color:var(--green)}.goal-input-wrap span{font-size:13px;color:var(--muted)}.modal-actions{display:flex;gap:9px;margin-top:20px}.modal-actions button{flex:1}.fine-print{font-size:10px!important;margin:12px 0 0!important}
+    @media(max-width:760px){.shell{padding:18px 17px 40px}.topbar{margin-bottom:25px}.dashboard,.lower-grid{grid-template-columns:1fr}.calorie-card{min-height:230px;grid-template-columns:1fr 145px;padding:22px}.ring{width:132px;height:132px}.remaining{font-size:54px}.stats{grid-template-columns:1fr 1fr}.section-heading{margin-top:25px}}
+    @media(max-width:420px){.intro{align-items:start;flex-direction:column}.goal-button{align-self:stretch}.calorie-card{grid-template-columns:1fr 115px;gap:8px;padding:18px}.ring{width:108px;height:108px}.ring:before{inset:8px}.ring-number{font-size:21px}.remaining{font-size:46px}.stats{gap:9px}.stat-card{padding:15px;min-height:105px}.stat-number{font-size:23px}.date-pill{font-size:11px}.button-row{grid-template-columns:1fr}.log-card,.analyzer-card{padding:18px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+    .dropzone{height:auto;min-height:320px;padding:14px;display:flex;align-items:center;justify-content:center}.dropzone img{width:100%;height:auto;max-height:480px;object-fit:contain;flex:none}
+    @media(max-width:760px){.dropzone{min-height:360px}.dropzone img{max-height:520px}}
+    @media(max-width:420px){.dropzone{min-height:300px}.dropzone img{max-height:420px}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">◒</span>kalorilens</div>
+      <div class="date-pill" id="today-label"></div>
+    </header>
+    <main>
+      <div class="intro">
+        <div><div class="eyebrow">Ringkasan harian</div><h1>Jaga ritmemu.</h1><p>Catat asupan dan pantau target kalori harianmu.</p></div>
+        <button class="goal-button" id="open-goal">⚙ &nbsp;Atur target kalori</button>
+      </div>
+      <section class="dashboard" aria-label="Ringkasan asupan kalori">
+        <article class="card calorie-card">
+          <div>
+            <div class="card-label">Kalori tersisa</div>
+            <div class="sub-label">dari target harianmu</div>
+            <div class="remaining" id="remaining">2.000<small> kkal</small></div>
+            <div class="progress-track" role="progressbar" id="progress-bar" aria-label="Target kalori terpakai" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill" id="progress-fill"></div></div>
+            <div class="progress-caption"><span id="eaten-caption">0 kkal dikonsumsi</span><span id="target-caption">Target 2.000</span></div>
+          </div>
+          <div class="ring-wrap"><div class="ring" id="ring"><div class="ring-content"><span class="ring-number" id="ring-percent">0%</span><span class="ring-caption">target tercapai</span></div></div><div class="ring-legend">Sisa target hari ini</div></div>
+        </article>
+        <div class="stats">
+          <article class="card stat-card"><div class="stat-top"><span>Sudah dimakan</span><span class="stat-icon" aria-hidden="true">🍽</span></div><div class="stat-number" id="eaten-total">0 <small>kkal</small></div></article>
+          <article class="card stat-card"><div class="stat-top"><span>Target harian</span><span class="stat-icon" aria-hidden="true">◎</span></div><div class="stat-number" id="goal-total">2.000 <small>kkal</small></div></article>
+          <article class="card stat-card"><div class="stat-top"><span>Protein tercatat</span><span class="stat-icon" aria-hidden="true">✳</span></div><div class="stat-number" id="protein-total">0 <small>g</small></div></article>
+          <article class="card stat-card"><div class="stat-top"><span>Menu hari ini</span><span class="stat-icon" aria-hidden="true">☷</span></div><div class="stat-number" id="meal-count">0 <small>menu</small></div></article>
+        </div>
+      </section>
+      <div class="section-heading"><h2>Aktivitas hari ini</h2><span id="meal-date"></span></div>
+      <section class="lower-grid">
+        <article class="card log-card"><div class="meal-list" id="meal-list" aria-live="polite"></div></article>
+        <article class="card analyzer-card">
+          <div class="analyzer-top"><div class="ai-icon" aria-hidden="true">✨</div><div><h3>Catat makanan</h3><p>Foto makanan untuk estimasi kalori dan protein.</p></div></div>
+          <div class="dropzone"><img id="preview" alt="Pratinjau foto makanan"><div class="dropzone-copy" id="photo-hint">📷<b>Pilih foto makanan</b><span>Foto dari atas dengan pencahayaan jelas</span></div></div>
+          <label class="secondary-button" for="photo" style="display:block;text-align:center;margin-top:11px;cursor:pointer">Pilih / ambil foto</label>
+          <input class="file-input" id="photo" type="file" accept="image/*" capture="environment">
+          <button class="primary-button" id="analyze" disabled>Analisis dengan AI</button>
+          <div class="loading" id="loading" role="status">Sedang menganalisis foto…</div><div class="error" id="error" role="alert"></div>
+          <div class="analysis-result" id="analysis-result" aria-live="polite"><h4 id="dish"></h4><p id="analysis-summary"></p><div class="result-cal" id="analysis-calories"></div><button class="primary-button save-result" id="save-meal">+ Tambahkan ke catatan hari ini</button></div>
+        </article>
+      </section>
+      <p class="disclaimer">Target adalah panduan yang dapat kamu sesuaikan. Estimasi dari foto bisa berbeda dari nilai sebenarnya; gunakan sebagai referensi, bukan saran medis.</p>
+    </main>
+  </div>
+  <div class="modal" id="goal-modal" role="dialog" aria-modal="true" aria-labelledby="goal-title">
+    <form class="modal-panel" id="goal-form"><h2 id="goal-title">Target kalori harian</h2><p>Masukkan target harian yang ingin kamu pantau. Jika belum tahu target yang sesuai, konsultasikan dengan tenaga kesehatan atau ahli gizi.</p><label for="goal-input">Target kalori</label><div class="goal-input-wrap"><input id="goal-input" type="number" min="500" max="10000" step="50" required><span>kkal / hari</span></div><div class="modal-actions"><button class="secondary-button" type="button" id="cancel-goal">Batal</button><button class="primary-button" type="submit">Simpan target</button></div><p class="fine-print">Pelacak ini membandingkan asupan dengan target yang kamu masukkan, bukan menghitung kebutuhan medis personal.</p></form>
+  </div>
+  <script>
+    const $=s=>document.querySelector(s);
+    const todayKey=new Date().toLocaleDateString('en-CA');
+    const storageKey=`kalorilens-day-${todayKey}`;
+    const goalStorageKey='kalorilens-daily-goal';
+    const format=new Intl.NumberFormat('id-ID');
+    let goal=Number(localStorage.getItem(goalStorageKey))||2000;
+    let dayData;
+    try{dayData=JSON.parse(localStorage.getItem(storageKey))||{meals:[]}}catch{dayData={meals:[]}}
+    if(!Array.isArray(dayData.meals))dayData.meals=[];
+    let file=null,pendingMeal=null;
+
+    function analyzeImage(form){return new Promise((resolve,reject)=>{const request=new XMLHttpRequest();request.open('POST','/api/analyze');request.onload=()=>{let data;try{data=JSON.parse(request.responseText)}catch{reject(new Error('Respons server tidak valid.'));return}if(request.status>=200&&request.status<300)resolve(data);else reject(new Error(data.error||'Analisis gagal'))};request.onerror=()=>reject(new Error('Tidak dapat terhubung ke server. Pastikan aplikasi masih berjalan.'));request.send(form)})}
+    function saveDay(){localStorage.setItem(storageKey,JSON.stringify(dayData))}
+    function render(){
+      const calories=dayData.meals.reduce((sum,meal)=>sum+(Number(meal.calories)||0),0);
+      const protein=dayData.meals.reduce((sum,meal)=>sum+(Number(meal.protein)||0),0);
+      const remaining=goal-calories;
+      const ratio=goal>0?Math.min(calories/goal,1):0;
+      $('#remaining').innerHTML=`${format.format(Math.abs(remaining))}<small> kkal</small>`;
+      $('.card-label').textContent=remaining<0?'Melebihi target':'Kalori tersisa';
+      $('#eaten-caption').textContent=`${format.format(calories)} kkal dikonsumsi`;
+      $('#target-caption').textContent=`Target ${format.format(goal)}`;
+      $('#eaten-total').innerHTML=`${format.format(calories)} <small>kkal</small>`;
+      $('#goal-total').innerHTML=`${format.format(goal)} <small>kkal</small>`;
+      $('#protein-total').innerHTML=`${format.format(Math.round(protein))} <small>g</small>`;
+      $('#meal-count').innerHTML=`${format.format(dayData.meals.length)} <small>menu</small>`;
+      $('#ring-percent').textContent=`${Math.round(ratio*100)}%`;
+      $('#ring').style.setProperty('--progress',`${ratio*360}deg`);
+      $('#progress-fill').style.width=`${ratio*100}%`;
+      $('#progress-fill').classList.toggle('over',remaining<0);
+      $('#progress-bar').setAttribute('aria-valuenow',String(Math.round(ratio*100)));
+      $('#remaining').style.color=remaining<0?'#bd5747':'';
+      $('#meal-list').innerHTML=dayData.meals.length?dayData.meals.map((meal,index)=>`<div class="meal"><div class="meal-icon" aria-hidden="true">🥗</div><div class="meal-info"><div class="meal-name">${escapeHtml(meal.name)}</div><div class="meal-time">${escapeHtml(meal.time)} · protein ${format.format(Math.round(meal.protein||0))} g</div></div><div class="meal-cal">${format.format(meal.calories)} kkal</div><button class="remove-meal" type="button" data-index="${index}" aria-label="Hapus ${escapeHtml(meal.name)}">×</button></div>`).join(''):'<div class="empty">Belum ada makanan dicatat.<br>Analisis foto untuk menambahkan menu pertama.</div>';
+      $('#meal-list').querySelectorAll('.remove-meal').forEach(button=>button.addEventListener('click',()=>{dayData.meals.splice(Number(button.dataset.index),1);saveDay();render()}));
+    }
+    function escapeHtml(value){return String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]))}
+    function closeGoal(){ $('#goal-modal').classList.remove('open') }
+    $('#open-goal').addEventListener('click',()=>{$('#goal-input').value=goal;$('#goal-modal').classList.add('open');$('#goal-input').focus()});
+    $('#cancel-goal').addEventListener('click',closeGoal);
+    $('#goal-modal').addEventListener('click',event=>{if(event.target===$('#goal-modal'))closeGoal()});
+    $('#goal-form').addEventListener('submit',event=>{event.preventDefault();const value=Number($('#goal-input').value);if(value<500||value>10000)return;goal=value;localStorage.setItem(goalStorageKey,String(goal));closeGoal();render()});
+    document.addEventListener('keydown',event=>{if(event.key==='Escape')closeGoal()});
+    $('#photo').addEventListener('change',event=>{file=event.target.files?.[0]||null;if(!file)return;$('#preview').src=URL.createObjectURL(file);$('#preview').style.display='block';$('#photo-hint').style.display='none';$('#analyze').disabled=false;$('#analysis-result').style.display='none';$('#error').style.display='none'});
+    $('#analyze').addEventListener('click',async()=>{if(!file)return;$('#loading').style.display='block';$('#error').style.display='none';$('#analysis-result').style.display='none';$('#analyze').disabled=true;try{const form=new FormData();form.append('image',file);const data=await analyzeImage(form);const min=Number(data.caloriesMin)||0,max=Number(data.caloriesMax)||min,proteinMin=Number(data.proteinMin)||0,proteinMax=Number(data.proteinMax)||proteinMin;pendingMeal={name:data.dishName||'Makanan',calories:Math.max(0,Math.round((min+max)/2)),protein:Math.max(0,Math.round((proteinMin+proteinMax)/2)),time:new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})};$('#dish').textContent=pendingMeal.name;$('#analysis-summary').textContent=`Porsi: ${data.portion||'belum diketahui'} · Keyakinan: ${data.confidence||'tidak diketahui'}. Estimasi titik tengah digunakan untuk catatan.`;$('#analysis-calories').textContent=`${format.format(min)}–${format.format(max)} kkal · ${format.format(proteinMin)}–${format.format(proteinMax)} g protein`;
+      $('#analysis-result').style.display='block'}catch(error){$('#error').textContent=error.message;$('#error').style.display='block'}finally{$('#loading').style.display='none';$('#analyze').disabled=!file}});
+    $('#save-meal').addEventListener('click',()=>{if(!pendingMeal)return;dayData.meals.push(pendingMeal);saveDay();render();pendingMeal=null;$('#analysis-result').style.display='none';$('#photo').value='';file=null;$('#preview').removeAttribute('src');$('#preview').style.display='none';$('#photo-hint').style.display='block';$('#analyze').disabled=true});
+    const dateLabel=new Intl.DateTimeFormat('id-ID',{weekday:'long',day:'numeric',month:'long'}).format(new Date());
+    $('#today-label').textContent=dateLabel;$('#meal-date').textContent=dateLabel;render();
+  </script>
+</body>
+</html>
