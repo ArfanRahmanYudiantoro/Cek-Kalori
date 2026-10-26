@@ -11,6 +11,10 @@ const upload = multer({
 
 app.use(express.static('public'));
 
+app.get('/', (_req, res) => {
+	res.redirect('/index.html');
+});
+
 app.post('/api/analyze', upload.single('image'), async (req, res) => {
 	try {
 		if (!process.env.GEMINI_API_KEY) {
